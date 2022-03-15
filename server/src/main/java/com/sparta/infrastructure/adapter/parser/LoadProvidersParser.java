@@ -4,14 +4,16 @@ import com.sparta.infrastructure.adapter.dto.LoadBatch;
 import com.sparta.infrastructure.adapter.dto.Record;
 import com.sparta.infrastructure.adapter.dto.Sensor;
 import com.sparta.infrastructure.adapter.dto.SensorCollection;
+import org.springframework.context.annotation.Configuration;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
+@Configuration
 public class LoadProvidersParser {
 
-    BytesReader bytesReader;
+    private BytesReader bytesReader;
 
     public LoadBatch parseRequestContent(byte[] content) {
         bytesReader = new BytesReader(content);

@@ -1,7 +1,10 @@
 package com.sparta.infrastructure.adapter.parser;
 
+import org.springframework.context.annotation.Configuration;
+
 import java.nio.ByteBuffer;
 
+@Configuration
 public class ByteToPrinitiveConverter {
 
     public long bytesToLong(byte[] bytes) {

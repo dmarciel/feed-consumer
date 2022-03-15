@@ -1,15 +1,9 @@
 package adapter.parser;
 
 
-import com.sparta.infrastructure.adapter.dto.LoadBatch;
-import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
-import static org.junit.Assert.assertEquals;
 
 class LoadProvidersParserTest {
 

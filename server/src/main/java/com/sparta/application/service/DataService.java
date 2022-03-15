@@ -1,4 +1,4 @@
-package com.sparta.domain.service;
+package com.sparta.application.service;
 
 import com.sparta.domain.repository.DataRepository;
 import com.sparta.domain.model.LoadBatch;

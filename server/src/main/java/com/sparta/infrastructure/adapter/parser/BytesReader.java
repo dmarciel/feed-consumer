@@ -1,16 +1,17 @@
 package com.sparta.infrastructure.adapter.parser;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
 public class BytesReader {
+
+    ByteArrayInputStream bytesReader;
 
     ByteToPrinitiveConverter byteToPrinitiveConverter = new ByteToPrinitiveConverter();
 
-    private int position = 0;
-    private byte[] content;
-
 
     public BytesReader (byte[] content) {
-        position = 0;
-        this.content = content;
+        bytesReader = new ByteArrayInputStream(content);
     }
 
     public long readLong() {
@@ -43,11 +44,14 @@ public class BytesReader {
 
         byte[] bytes = new byte[length];
 
-        for (int i = 0; i < length; i++) {
-            bytes[i] = content[position + i];
+        try {
+            bytesReader.read(bytes);
+
+        } catch (IOException exception) {
+            // it is not going to happen since the data comes from memory
+            exception.printStackTrace();
         }
 
-        position += length;
         return bytes;
     }
 }

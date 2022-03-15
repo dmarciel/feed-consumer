@@ -1,6 +1,6 @@
 package com.sparta.infrastructure.adapter.rest.controller;
 
-import com.sparta.domain.service.DataService;
+import com.sparta.application.service.DataService;
 import com.sparta.domain.model.LoadBatch;
 import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
 import lombok.extern.log4j.Log4j2;

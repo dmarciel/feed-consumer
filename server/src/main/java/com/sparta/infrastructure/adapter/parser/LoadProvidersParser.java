@@ -14,13 +14,13 @@ public class LoadProvidersParser {
     private int position = 0;
     private byte[] content;
 
-    public int parseRequestContent(byte[] content) {
+    public LoadBatch parseRequestContent(byte[] content) {
         position = 0;
         this.content = content;
 
         LoadBatch loadBatch = extractLoadBatch();
 
-        return (int) loadBatch.getNumberOfRecords(); //I can´t change the signature so I have to truncate it
+        return loadBatch;
     }
 
     private LoadBatch extractLoadBatch() {

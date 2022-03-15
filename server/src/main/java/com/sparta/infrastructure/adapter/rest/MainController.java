@@ -1,69 +1,37 @@
 package com.sparta.infrastructure.adapter.rest;
 
+import com.sparta.infrastructure.adapter.dto.LoadBatch;
 import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
+@Log4j2
 @RestController
 public class MainController {
 
 
-  @PostMapping("/load/{provider}")
-  public int load(@PathVariable("provider") String provider, @RequestBody byte[] content){
+    @PostMapping("/load/{provider}")
+    public int load(@PathVariable("provider") String provider, @RequestBody byte[] content) {
 
-      dumpToFile(content);
+        log.info("a request with a provider {} has been received", provider);
+
+        LoadProvidersParser loadProvidersParser = new LoadProvidersParser();
+        LoadBatch loadBatch = loadProvidersParser.parseRequestContent(content);
+
+        log.info("{} of {} records of the request has been properly parsed", loadBatch.getRecords().size(), loadBatch.getNumberOfRecords());
 
 
-    LoadProvidersParser loadProvidersParser = new LoadProvidersParser();
-    int numberOfRecords = loadProvidersParser.parseRequestContent(content);
 
-    return numberOfRecords;
+        log.info("responding the client with {} as the number of records parsed", loadBatch.getNumberOfRecords());
 
-//    return 360;
+        return (int) loadBatch.getNumberOfRecords(); //I can´t change the signature so I have to truncate it
 
-  }
-
-  static int iteration = 0;
-
-  private void dumpToFile(byte[] content) {
-
-    try {
-      String fileName = "file" + iteration + ".txt";
-
-//      BufferedWriter bw = null;
-//      bw = Files.newBufferedWriter(Path.of(fileName), StandardCharsets.UTF_8);
-//
-//      for (int i = 0; i < content.length; i++) {
-//        bw.write(content[i]);
-//      }
-//      bw.close();
-
-      try (FileOutputStream fos = new FileOutputStream(fileName)) {
-//        fos.write(bytes);
-
-        for (int i = 0; i < content.length; i++) {
-          fos.write(content[i]);
-        }
-
-      }
-
-      iteration++;
-
-    } catch (IOException exception) {
-      exception.printStackTrace();
     }
-  }
 
-  @GetMapping("/data/{provider}/total")
-  public int total(@PathVariable("provider") String provider) {
-    return 100;
-  }
+
+    @GetMapping("/data/{provider}/total")
+    public int total(@PathVariable("provider") String provider) {
+        return 100;
+    }
 
 }

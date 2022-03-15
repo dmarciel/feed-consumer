@@ -1,4 +1,4 @@
-package adapter.parser;
+package com.sparta.service.parser;
 
 
 import org.junit.jupiter.api.Test;

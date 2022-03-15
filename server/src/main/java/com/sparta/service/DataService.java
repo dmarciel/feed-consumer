@@ -1,8 +1,8 @@
-package com.sparta.application.service;
+package com.sparta.service;
 
 import com.sparta.domain.repository.DataRepository;
 import com.sparta.domain.model.LoadBatch;
-import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
+import com.sparta.service.parser.LoadProvidersParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

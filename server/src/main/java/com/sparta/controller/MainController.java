@@ -1,8 +1,7 @@
-package com.sparta.infrastructure.adapter.rest.controller;
+package com.sparta.controller;
 
-import com.sparta.application.service.DataService;
+import com.sparta.service.DataService;
 import com.sparta.domain.model.LoadBatch;
-import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

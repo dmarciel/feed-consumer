@@ -1,6 +1,5 @@
-package com.sparta.infrastructure.repository;
+package com.sparta.domain.repository;
 
-import com.sparta.domain.repository.DataRepository;
 import com.sparta.domain.model.LoadBatch;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +11,7 @@ import java.util.Map;
 @Repository
 public class InMemoryDataRepository implements DataRepository<LoadBatch> {
 
-    Map<String, List<LoadBatch>> batchesPerProvider = new HashMap<>();
+    private Map<String, List<LoadBatch>> batchesPerProvider = new HashMap<>();
 
     public void save(String provider, LoadBatch loadBatchToSave){
         batchesPerProvider.computeIfAbsent(provider, key -> new ArrayList<LoadBatch>());

@@ -1,7 +1,6 @@
-package adapter.parser;
+package com.sparta.service.parser;
 
 import com.sparta.domain.model.LoadBatch;
-import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
 
 import java.io.IOException;
 import java.nio.file.Files;

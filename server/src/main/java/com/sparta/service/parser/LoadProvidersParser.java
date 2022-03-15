@@ -1,4 +1,4 @@
-package com.sparta.infrastructure.adapter.parser;
+package com.sparta.service.parser;
 
 import com.sparta.domain.model.LoadBatch;
 import com.sparta.domain.model.Record;

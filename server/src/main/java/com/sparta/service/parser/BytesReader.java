@@ -1,4 +1,4 @@
-package com.sparta.infrastructure.adapter.parser;
+package com.sparta.service.parser;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

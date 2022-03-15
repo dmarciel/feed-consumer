@@ -1,4 +1,4 @@
-package com.sparta.infrastructure.adapter.parser;
+package com.sparta.service.parser;
 
 import org.springframework.context.annotation.Configuration;
 

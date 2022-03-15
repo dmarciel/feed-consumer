@@ -1,11 +1,10 @@
-package adapter.parser;
+package com.sparta.service.parser;
 
 
 import com.sparta.domain.model.LoadBatch;
 import com.sparta.domain.model.Record;
 import com.sparta.domain.model.Sensor;
 import com.sparta.domain.model.SensorCollection;
-import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

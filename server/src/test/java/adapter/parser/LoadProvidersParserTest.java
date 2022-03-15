@@ -17,6 +17,11 @@ import static org.junit.Assert.assertEquals;
 
 class LoadProvidersParserAsClassesTest {
 
+    /** The data is too coupled, there is no way to uncouple the reading of the stream since we don´t controll it´s generation
+     *  It makes it difficult to extract, and test this part of the code
+     *
+     * @throws IOException
+     */
     @Test
     void parseInfoSecondtFileAsClasses() throws IOException {
 

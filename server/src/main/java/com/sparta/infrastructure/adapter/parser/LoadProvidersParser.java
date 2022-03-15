@@ -11,29 +11,23 @@ import java.util.List;
 
 public class LoadProvidersParser {
 
-    private int position = 0;
-    private byte[] content;
+    BytesReader bytesReader;
 
     public LoadBatch parseRequestContent(byte[] content) {
-        position = 0;
-        this.content = content;
+        bytesReader = new BytesReader(content);
 
         LoadBatch loadBatch = extractLoadBatch();
-
         return loadBatch;
     }
 
     private LoadBatch extractLoadBatch() {
 
-        long numberOfRecords = readLong();
-//        System.out.println("numberOfRecords: '" + numberOfRecords + "'");
+        long numberOfRecords = bytesReader.readLong();
 
         List<Record> records = new ArrayList<>();
-
         for(long recordNumber = 0; recordNumber < numberOfRecords; recordNumber ++) {
 
             final Record record = extractRecord();
-
             records.add(record);
         }
 
@@ -42,36 +36,26 @@ public class LoadProvidersParser {
 
     private Record extractRecord() {
 
-        final long recordIndex = readLong(); //en la documentacion viene como int pero es long
-        final long timeStamp = readLong();
-        final String city = readString();
-        final int numberBytesSensorData = readInt();
+        final long recordIndex = bytesReader.readLong(); //en la documentacion viene como int pero es long
+        final long timeStamp = bytesReader.readLong();
+        final String city = bytesReader.readString();
+        final int numberBytesSensorData = bytesReader.readInt();
 
         final SensorCollection sensorCollection = extractSensorCollection();
 
-        final long crc32SensorsData = readLong();
-
-
-//            System.out.println();
-//            System.out.print("recordIndex: '" + recordIndex + "'");
-//            System.out.print(" timeStamp: '" + new Date(timeStamp) + "'");
-//            System.out.print(" city: '" + city + "'");
-//            System.out.println(" numberBytesSensorData: '" + numberBytesSensorData + "'");
-//            System.out.println("numberOfSensors: '" + numberOfSensors + "'");
-//            System.out.println("crc32SensorsData: '" + crc32SensorsData + "'");
+        final long crc32SensorsData = bytesReader.readLong();
 
         return new Record(recordIndex, timeStamp, city, numberBytesSensorData, sensorCollection, crc32SensorsData);
     }
 
     private SensorCollection extractSensorCollection() {
 
-        int numberOfSensors = readInt();
+        int numberOfSensors = bytesReader.readInt();
 
         List<Sensor> sensors = new ArrayList<>();
-
         for (int sernsorId = 0; sernsorId < numberOfSensors; sernsorId++) {
 
-            Sensor sensor = extractSensor();
+            final Sensor sensor = extractSensor();
             sensors.add(sensor);
         }
 
@@ -79,65 +63,11 @@ public class LoadProvidersParser {
     }
 
     private Sensor extractSensor() {
-        final String id = readString();
-        final int measure = readInt();
 
-//        System.out.println("id: '" + id + "', measure: '" + measure + "'");
+        final String id = bytesReader.readString();
+        final int measure = bytesReader.readInt();
+
         return new Sensor(id, measure);
-
-    }
-
-    private long readLong() {
-
-        byte[] bytes = loadNextBytes(Long.BYTES);
-
-        long long_ = bytesToLong(bytes);
-
-        return long_;
-    }
-
-    private int readInt() {
-
-        byte[] bytes = loadNextBytes(Integer.BYTES);
-
-        int int_ = bytesToInt(bytes);
-
-        return int_;
-    }
-
-    private String readString() {
-        int strLenght = readInt();
-
-        byte[] bytes = loadNextBytes(strLenght);
-
-        return new String( bytes );
-    }
-
-    private byte[] loadNextBytes(int length) {
-
-        byte[] bytes = new byte[length];
-
-        for (int i = 0; i < length; i++) {
-            bytes[i] = content[position + i];
-        }
-
-        position += length;
-
-        return bytes;
-    }
-
-    private long bytesToLong(byte[] bytes) {
-        ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
-        buffer.put(bytes);
-        buffer.flip();//need flip
-        return buffer.getLong();
-    }
-
-    private int bytesToInt(byte[] bytes) {
-        ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES);
-        buffer.put(bytes);
-        buffer.flip();//need flip
-        return buffer.getInt();
     }
 
 }

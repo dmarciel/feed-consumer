@@ -48,7 +48,7 @@ public class BytesReader {
             bytesReader.read(bytes);
 
         } catch (IOException exception) {
-            // it is not going to happen since the data comes from memory
+            // it is not going to happen since the data is already in memory
             exception.printStackTrace();
         }
 

@@ -12,28 +12,20 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
 
     private DataService dataService;
-    private LoadProvidersParser loadProvidersParser;
 
     @Autowired
-    public MainController(DataService dataService, LoadProvidersParser loadProvidersParser) {
+    public MainController(DataService dataService) {
         this.dataService = dataService;
-        this.loadProvidersParser = loadProvidersParser;
     }
-
 
     @PostMapping("/load/{provider}")
     public int load(@PathVariable("provider") String provider, @RequestBody byte[] content) {
 
         log.info("Load request with a provider {} has been received", provider);
 
-        LoadProvidersParser loadProvidersParser = new LoadProvidersParser();
-        LoadBatch loadBatch = loadProvidersParser.parseRequestContent(content);
+        final LoadBatch loadBatch = dataService.save(provider, content);
 
-        log.info("{} of {} records of the request has been properly parsed", loadBatch.getRecords().size(), loadBatch.getNumberOfRecords());
-
-        dataService.save(provider, loadBatch);
-
-        log.info("responding the client with {} as the number of records parsed", loadBatch.getNumberOfRecords());
+        log.info("responding the client with {} of {} records of the request properly parsed", loadBatch.getRecords().size(), loadBatch.getNumberOfRecords());
 
         return loadBatch.getRecords().size(); //I can´t change the signature so I have to truncate it
 

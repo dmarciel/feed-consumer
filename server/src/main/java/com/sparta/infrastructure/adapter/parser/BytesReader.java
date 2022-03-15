@@ -5,9 +5,8 @@ import java.io.IOException;
 
 public class BytesReader {
 
-    ByteArrayInputStream bytesReader;
-
-    ByteToPrinitiveConverter byteToPrinitiveConverter = new ByteToPrinitiveConverter();
+    private ByteArrayInputStream bytesReader;
+    private ByteToPrinitiveConverter byteToPrinitiveConverter = new ByteToPrinitiveConverter();
 
 
     public BytesReader (byte[] content) {

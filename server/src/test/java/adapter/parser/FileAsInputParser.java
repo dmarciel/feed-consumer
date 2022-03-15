@@ -1,6 +1,6 @@
 package adapter.parser;
 
-import com.sparta.infrastructure.adapter.dto.LoadBatch;
+import com.sparta.domain.model.LoadBatch;
 import com.sparta.infrastructure.adapter.parser.LoadProvidersParser;
 
 import java.io.IOException;

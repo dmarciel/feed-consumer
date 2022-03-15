@@ -1,7 +1,7 @@
 package com.sparta.domain.service;
 
 import com.sparta.domain.repository.DataRepository;
-import com.sparta.infrastructure.adapter.dto.LoadBatch;
+import com.sparta.domain.model.LoadBatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

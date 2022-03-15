@@ -1,4 +1,4 @@
-package com.sparta.infrastructure.adapter.dto;
+package com.sparta.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

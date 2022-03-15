@@ -1,7 +1,7 @@
 package com.sparta.infrastructure.repository;
 
 import com.sparta.domain.repository.DataRepository;
-import com.sparta.infrastructure.adapter.dto.LoadBatch;
+import com.sparta.domain.model.LoadBatch;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.sparta.infrastructure.adapter.rest;
+package com.sparta.infrastructure.adapter.rest.controller;
 
 import com.sparta.domain.service.DataService;
 import com.sparta.domain.model.LoadBatch;

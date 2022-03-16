@@ -1,16 +1,17 @@
 package com.sparta.service.parser;
 
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 
 class LoadProvidersParserTest {
 
     FileAsInputParser fileAsInputParser = new FileAsInputParser();
 
     @Test
-    void parseInfoFirstFile() throws IOException {
+    public void parseInfoFirstFile() throws IOException {
 
         fileAsInputParser.parseFileTest("file0.txt", 360);
     }

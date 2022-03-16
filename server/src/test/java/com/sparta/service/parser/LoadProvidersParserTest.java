@@ -1,18 +1,19 @@
 package com.sparta.service.parser;
 
-
 import com.sparta.domain.model.LoadBatch;
 import com.sparta.domain.model.Record;
 import com.sparta.domain.model.Sensor;
 import com.sparta.domain.model.SensorCollection;
-import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+
 
 class LoadProvidersParserAsClassesTest {
 

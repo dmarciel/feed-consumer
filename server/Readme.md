@@ -16,18 +16,14 @@ I have taken the following considerations:
 
 2. There was no specific information about the input data I had to do reverse engineering.
    It took me the longest.
-   
-3. I found a "feature" in the documentation. 
+   I found a "glitch" in the documentation. 
    According to the documentation, recordIndex should be a int32 (int),
    I found out it was actually a int64 (long)
 
-4. Since the business logic doesn´t need to have different behaviour than the incoming dto 
+3. Since the business logic doesn´t need to have different behaviour than the incoming dto 
    I didn´t map the entities in new objects, if it is required please let me know.
    In this case I will add it to the development.
    
-5. Due to the lack of test cases, and the reverse engineering of the development,
+4. Due to the lack of test cases, and the reverse engineering of the development,
    I couldn´t use TDD properly.
    
-7. There is live swagger documentation about the project.
-   In order to access it the project must be running,
-   then you can access it [here](http://localhost:8080/swagger-ui/index.html).

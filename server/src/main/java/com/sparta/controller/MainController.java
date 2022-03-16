@@ -17,6 +17,12 @@ public class MainController {
         this.dataService = dataService;
     }
 
+    /**
+     * Loads the input information into the database
+     * @param provider name
+     * @param content LoadBatch encoded as byte[]
+     * @return the number of records readed
+     */
     @PostMapping("/load/{provider}")
     public int load(@PathVariable("provider") String provider, @RequestBody byte[] content) {
 
@@ -26,21 +32,25 @@ public class MainController {
 
         log.info("responding the client with {} of {} records of the request properly parsed", loadBatch.getRecords().size(), loadBatch.getNumberOfRecords());
 
-        return loadBatch.getRecords().size(); //I can´t change the signature so I have to truncate it
+        return loadBatch.getRecords().size(); //I cant change the signature so I have to truncate it
 
     }
-
-
+    
+    /**
+     * Gets the total number of messages sent by a provider
+     * @param provider name
+     * @return number of total calls
+     */
     @GetMapping("/data/{provider}/total")
     public int total(@PathVariable("provider") String provider) {
 
         log.info("Total request for the provider {} has been received", provider);
 
-        final long total = dataService.getTotal(provider);
+        final int total = dataService.getTotal(provider);
 
         log.info("responding the client with {} as the total of records parsed for {}", total, provider);
 
-        return (int) total;
+        return total;
     }
 
 }

@@ -1,9 +1,11 @@
-package com.sparta.service.parser;
+package com.sparta.service;
+
 
 import com.sparta.domain.model.LoadBatch;
 import com.sparta.domain.model.Record;
 import com.sparta.domain.model.Sensor;
 import com.sparta.domain.model.SensorCollection;
+import com.sparta.service.parser.LoadProvidersParser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,11 +15,15 @@ import java.nio.file.Path;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 
 class LoadProvidersParserAsClassesTest {
 
-    /** The data is too coupled, there is no way to uncouple the reading of the stream since we don´t controll it´s generation
+	
+    /** The data is too coupled, there is no way to decouple the reading of the stream since we dont controll it´s generation
      *  It makes it difficult to extract, and test this part of the code
      *
      * @throws IOException
@@ -25,8 +31,9 @@ class LoadProvidersParserAsClassesTest {
     @Test
     void parseInfoSecondtFileAsClasses() throws IOException {
 
-        LoadProvidersParser loadProvidersParser = new LoadProvidersParser();
         byte[] content = Files.readAllBytes(Path.of("src/test/resources/parser/file1.txt"));
+        
+        LoadProvidersParser loadProvidersParser = new LoadProvidersParser();
 
         LoadBatch loadBatch = loadProvidersParser.parseRequestContent(content);
 

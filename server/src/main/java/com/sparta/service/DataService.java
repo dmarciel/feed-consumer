@@ -1,8 +1,9 @@
 package com.sparta.service;
 
 import com.sparta.domain.repository.DataRepository;
-import com.sparta.domain.model.LoadBatch;
 import com.sparta.service.parser.LoadProvidersParser;
+import com.sparta.domain.model.LoadBatch;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class DataService {
         return loadBatch;
     }
 
-    public long getTotal(String provider) {
+    public int getTotal(String provider) {
         return dataRepository.countByProvider(provider);
     }
 }

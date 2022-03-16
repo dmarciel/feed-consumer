@@ -32,7 +32,7 @@ public class InMemoryDataRepository implements DataRepository<LoadBatch> {
      * @return total amount of records uploaded by a provider
      */
     @Override
-    public long countByProvider(String provider) {
+    public int countByProvider(String provider) {
 
         if(batchesPerProvider.containsKey(provider)){
 

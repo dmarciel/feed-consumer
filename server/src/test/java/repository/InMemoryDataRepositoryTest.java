@@ -1,7 +1,8 @@
-package com.sparta.domain.repository;
+package repository;
 
 import com.sparta.domain.model.LoadBatch;
 import com.sparta.domain.model.Record;
+import com.sparta.domain.repository.InMemoryDataRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

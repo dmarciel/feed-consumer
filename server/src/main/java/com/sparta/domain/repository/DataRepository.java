@@ -5,4 +5,6 @@ public interface DataRepository<T> {
     public void save(String key, T value);
 
     public long countByProvider(String provider);
+
+	public void deleteAll();
 }

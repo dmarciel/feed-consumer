@@ -42,5 +42,15 @@ public class InMemoryDataRepository implements DataRepository<LoadBatch> {
         else return 0;
     }
 
+    /** Deletes all the information in the database
+     * 
+     */
+	@Override
+	public void deleteAll() {
+
+		batchesPerProvider.clear();
+		
+	}
+
 
 }

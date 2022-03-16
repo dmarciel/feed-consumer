@@ -5,7 +5,7 @@ import com.sparta.domain.model.LoadBatch;
 import com.sparta.domain.model.Record;
 import com.sparta.domain.model.Sensor;
 import com.sparta.domain.model.SensorCollection;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;

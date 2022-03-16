@@ -37,9 +37,7 @@ public class InMemoryDataRepository implements DataRepository<LoadBatch> {
         if(batchesPerProvider.containsKey(provider)){
 
             //this could be precalculated but since I don´t know whether it is going to grow I can´t do precalculations in advance
-            return batchesPerProvider.get(provider).stream()
-                    .flatMap( loadBatch -> loadBatch.getRecords().stream())
-                    .count();
+            return batchesPerProvider.get(provider).size();
         }
         else return 0;
     }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InMemoryDataRepositoryTest {
 
@@ -82,7 +82,7 @@ public class InMemoryDataRepositoryTest {
         assertEquals(1, totalOne);
 
         final long totalTwo = inMemoryDataRepository.countByProvider("Two");
-        assertEquals(2, totalTwo);
+        assertEquals(1, totalTwo);
 
     }
 
@@ -124,7 +124,7 @@ public class InMemoryDataRepositoryTest {
         inMemoryDataRepository.save("One", loadBatchToSave3);
 
         final long totalOne = inMemoryDataRepository.countByProvider("One");
-        assertEquals(3, totalOne);
+        assertEquals(2, totalOne);
 
         final long totalTwo = inMemoryDataRepository.countByProvider("Two");
         assertEquals(1, totalTwo);

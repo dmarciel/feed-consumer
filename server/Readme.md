@@ -25,3 +25,4 @@ Since documentation was very open, and many points weren´t settled I have taken
 
 7. The data parse happens in the infrastructure layout, in MVC it would happen in the service layer, but since I am trying to do a hexagonal architecture I think as long as it is not in inner layers domain it should remain in the infrastructure layer.
 
+8. There are swagger documentation about the project, the project must be running in order to be able to see it, you can access it [here](http://localhost:8080/swagger-ui/index.html).
